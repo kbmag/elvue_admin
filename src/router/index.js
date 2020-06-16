@@ -27,6 +27,11 @@ Vue.use(VueRouter)
         path:'/seting',// 设置页面的路由
         name:'seting',
         component:() => import('../views/seting.vue')
+      },
+      {
+        path:'/table',// 设置页面的路由
+        name:'table',
+        component:() => import('../views/table.vue')
       }
     ]
   }
