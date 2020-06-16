@@ -3,7 +3,7 @@
         <el-menu
             class="sidebar-el-menu"
             :default-active="$route.path"
-            :collapse="collapse"
+            :collapse="collapsed"
             background-color="#324157"
             text-color="#bfcbd9"
             active-text-color="#20a0ff"
@@ -48,7 +48,7 @@ export default {
     data() {
         //这里存放数据
         return {
-            collapse: false,
+            collapsed:false,
         };
     },
     //监听属性 类似于data概念
@@ -63,7 +63,7 @@ export default {
     },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
-
+        
     },
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {

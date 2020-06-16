@@ -1,8 +1,5 @@
 <template>
     <div class="header">
-        <div class="collapse-btn" @click="collapseChage">
-            <i class="el-icon-s-unfold"></i>
-        </div>
         <div class="logo">后台管理系统</div>
         <div class="header-right">
             <div class="header-user-con">
@@ -27,7 +24,6 @@ export default {
     data() {
         //这里存放数据
         return {
-            collapse: true,
             fullscreen: false,   
         };
     },
@@ -63,9 +59,6 @@ export default {
             }
             this.fullscreen = !this.fullscreen;
         },
-        collapseChage(){
-            this.collapse = !this.collapse
-        }
     },
     //生命周期 - 创建完成（可以访问当前this实例）
     created() {
@@ -73,9 +66,7 @@ export default {
     },
     //生命周期 - 挂载完成（可以访问DOM元素）
     mounted() {
-        // if (document.body.clientWidth < 1500) {
-        //     this.collapseChage();
-        // }
+        
     },
     beforeCreate() {}, //生命周期 - 创建之前
     beforeMount() {}, //生命周期 - 挂载之前

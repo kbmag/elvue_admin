@@ -2,13 +2,11 @@
    <div class="wrapper">
         <vHeader></vHeader>
         <vSidebar></vSidebar>
-        <div class="content-box" :class="{'content-collapse':collapse}">
+        <div class="content-box">
             <div class="content">
-                <transition name="move" mode="out-in">
-                    <keep-alive :include="tagsList">
-                        <router-view></router-view>
-                    </keep-alive>
-                </transition>
+                <keep-alive>
+                    <router-view></router-view>
+                </keep-alive>
             </div>
         </div>
     </div>
@@ -25,8 +23,7 @@ export default {
     },
     data: function () {
         return {
-            tagsList: [],
-            collapse: false
+
         }
     },
     computed: {
