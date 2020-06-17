@@ -1,11 +1,11 @@
 <template>
-    <el-form :model="myForm" ref="myForm" class="demo-ruleForm login-container">
+    <el-form :rules="loginFormRules" :model="loginForm" ref="loginForm" class="demo-ruleForm login-container">
         <h3 class="title">后台管理系统</h3>
         <el-form-item prop="username">
-            <el-input type="text" v-model="myForm.username" autocomplete="off" placeholder="账号"></el-input>
+            <el-input type="text" v-model="loginForm.username" autocomplete="off" placeholder="账号"></el-input>
         </el-form-item>
         <el-form-item prop="password">
-            <el-input type="password" v-model="myForm.password" autocomplete="off" placeholder="密码"></el-input>
+            <el-input type="password" v-model="loginForm.password" autocomplete="off" placeholder="密码"></el-input>
         </el-form-item>
         <el-checkbox class="remember">记住密码</el-checkbox>
         <el-form-item style="width:100%;">
@@ -24,7 +24,18 @@ export default {
     data() {
         //这里存放数据
         return {
-            myForm: {}
+            loginForm:{
+                username:'',
+                password:''
+            },
+            loginFormRules:{
+                username:[
+                    {required: true, message: '账号不可为空', trigger: 'blur'}
+                ],
+                password:[
+                    {required: true, message: '密码不可为空', trigger: 'blur'}
+                ]
+            }
         };
     },
     //监听属性 类似于data概念
