@@ -3,14 +3,19 @@ import VueRouter from 'vue-router'
 
 Vue.use(VueRouter)
 
-  const routes = [
+const routes = [
   {
     path: '/',
-    redirect: '/main'
+    redirect: '/login'
+  },
+  {
+    path: '/login',
+    name: 'login',
+    component:() => import('../views/login.vue')
   },
   {
     //首页
-    path: '/main',
+    path: '/',
     name: 'main',
     component: () => import('../views/main.vue'),
     children:[// 开始嵌套路由，这下面的所有路由都是Main路由的子路由
@@ -34,7 +39,7 @@ Vue.use(VueRouter)
         component:() => import('../views/table.vue')
       }
     ]
-  }
+  },
 ]
 
 const router = new VueRouter({
