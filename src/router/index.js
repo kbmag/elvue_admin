@@ -11,6 +11,10 @@ const routes = [
   {
     path: '/login',
     name: 'login',
+    hidden: true,
+    meta: { 
+      requireAuth:true 
+    },
     component:() => import('../views/login.vue')
   },
   {
@@ -26,21 +30,32 @@ const routes = [
       {
         path:'/index',// 首页的路由
         name:'index',
+        meta: { 
+          requireAuth:true 
+        },
         component:() => import('../views/index.vue')
       },
       {
         path:'/seting',// 设置页面的路由
         name:'seting',
+        meta: { 
+          requireAuth:true 
+        },
         component:() => import('../views/seting.vue')
       },
       {
         path:'/table',// 设置页面的路由
         name:'table',
+        meta: { 
+          requireAuth:true 
+        },
         component:() => import('../views/table.vue')
       }
     ]
   },
 ]
+
+
 
 const router = new VueRouter({
   routes

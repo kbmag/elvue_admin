@@ -7,9 +7,9 @@
         <el-form-item prop="password">
             <el-input type="password" v-model="loginForm.password" autocomplete="off" placeholder="密码"></el-input>
         </el-form-item>
-        <el-checkbox class="remember">记住密码</el-checkbox>
+        <el-checkbox v-model="checked" class="remember">记住密码</el-checkbox>
         <el-form-item style="width:100%;">
-            <el-button type="primary" style="width:100%;">登录</el-button>
+            <el-button type="primary" style="width:100%;" :loading="logining"  @click="handleSubmit('loginForm')">登录</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -24,6 +24,8 @@ export default {
     data() {
         //这里存放数据
         return {
+            logining:false,
+            checked: false,
             loginForm:{
                 username:'',
                 password:''
@@ -44,6 +46,43 @@ export default {
     watch: {},
     //方法集合
     methods: {
+        handleSubmit(formName){
+            this.$refs[formName].validate((valid) => {
+                if (valid) {
+                    this.logining = true;
+                    this.$axios.get('/login', {
+                        params:{
+                            username:this.loginForm.username,
+                            password:this.loginForm.password
+                        }
+                    })
+                    .then(res => {
+                        this.logining = false;
+                        if(res.data.state == 1) {
+                            this.$message({
+                                message: '登录成功',
+                                type: 'success'
+                            });
+                            this.$router.push({path: '/index'});
+                        }else{
+                            this.$message({
+                                message: '用户名或密码不正确',
+                                type: 'error'
+                            });
+                            this.$refs.loginForm.resetFields();
+                        }
+                    }).catch(err=>{
+                        
+                    })
+                } else {
+                    console.log('error submit!!');
+                    return false;
+                }
+            });
+        },
+        resetForm(formName) {
+            this.$refs[formName].resetFields();
+        }
 
     },
     //生命周期 - 创建完成（可以访问当前this实例）
@@ -85,7 +124,7 @@ export default {
         border-radius: 5px;
         -moz-border-radius: 5px;
         background-clip: padding-box;
-        margin: 180px auto;
+        margin: 130px auto;
         width: 350px;
         padding: 35px 35px 15px 35px;
         background: #fff;

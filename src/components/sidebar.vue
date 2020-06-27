@@ -18,7 +18,7 @@
                 <i class="el-icon-menu"></i>
                 <span slot="title">表格</span>  
             </el-menu-item>
-            <el-menu-item index="/articles">
+            <el-menu-item index="/button">
                 <i class="el-icon-document"></i>
                 <span slot="title">文章</span>
             </el-menu-item>
